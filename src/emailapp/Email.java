@@ -16,9 +16,12 @@ public class Email {
 	private int minimumPasswordLength = 8;
 
 	/**
-	 * @param firstName (String)
-	 * @param lastName (String)
-	 * @param department (String)
+	 * @param firstName
+	 *            (String)
+	 * @param lastName
+	 *            (String)
+	 * @param department
+	 *            (String)
 	 */
 	public Email(String firstName, String lastName, String department) {
 		this.firstName = firstName;
@@ -26,7 +29,7 @@ public class Email {
 		this.department = department;
 		this.password = generateRandomPassword();
 		this.email = generateEmail();
-		
+
 		System.out.println("EMAIL CREATED:");
 		System.out.println("Email: " + email);
 		System.out.println("Password: " + password);
@@ -107,5 +110,16 @@ public class Email {
 	 */
 	public int getMailboxCapacity() {
 		return this.mailboxCapacity;
+	}
+
+	/**
+	 * Prints some important info about the object.
+	 */
+	@Override
+	public String toString() {
+		return "Email: " + email
+				+ "\nPassword: " + password
+				+ "\nMailBox Capacity: " + mailboxCapacity
+				+ "\nAlternate Email Address: " + alternateEmailAddress;
 	}
 }
