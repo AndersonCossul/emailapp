@@ -1,12 +1,9 @@
 package emailapp;
 
-import java.util.Scanner;
-
 /**
  * This class represents the Email of new hires.
  * 
  * @author Anderson Cossul
- *
  */
 public class Email {
 	private String firstName;
@@ -29,6 +26,10 @@ public class Email {
 		this.department = department;
 		this.password = generateRandomPassword();
 		this.email = generateEmail();
+		
+		System.out.println("EMAIL CREATED:");
+		System.out.println("Email: " + email);
+		System.out.println("Password: " + password);
 	}
 
 	/**
@@ -37,9 +38,9 @@ public class Email {
 	 *         not set.
 	 */
 	private String generateEmail() {
-		String email = firstName + '.' + lastName + "@";
+		String email = firstName.toLowerCase() + '.' + lastName.toLowerCase() + "@";
 		if (department != "") {
-			email += department + ".";
+			email += department.toLowerCase() + ".";
 		}
 		email += "company.com";
 		return email;
@@ -50,12 +51,12 @@ public class Email {
 	 */
 	private String generateRandomPassword() {
 		String passwordChars = "ABCDEFGHIJKLMNOPQRSTUWXYZ0123456789!@#$%";
-		char[] password = new char[minimumPasswordLength];
+		char[] pass = new char[minimumPasswordLength];
 		for (int i = 0; i < minimumPasswordLength; i++) {
-			int randomValueInPasswordCharsRange = (int) Math.random() * passwordChars.length();
-			password[i] = passwordChars.charAt(randomValueInPasswordCharsRange);
+			int randomValueInPasswordCharsRange = (int) (Math.random() * passwordChars.length());
+			pass[i] = passwordChars.charAt(randomValueInPasswordCharsRange);
 		}
-		return password.toString();
+		return new String(pass);
 	}
 
 	/**
